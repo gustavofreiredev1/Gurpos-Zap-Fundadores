@@ -1,0 +1,6 @@
+{
+  "name": "Programa Fundadores - Plataforma de Grupos WhatsApp",
+  "description": "Landing Page Oficial do Programa Fundadores da Plataforma de Monetização e Automação de Grupos de WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
