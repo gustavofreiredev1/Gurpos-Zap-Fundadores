@@ -1,113 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import { AuroraBackground } from './components/AuroraBackground';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { CountdownSection } from './components/CountdownSection';
-import { BenefitsSection } from './components/BenefitsSection';
-import { HowItWorksSection } from './components/HowItWorksSection';
-import { AffiliatesSection } from './components/AffiliatesSection';
-import { CreditSystemSection } from './components/CreditSystemSection';
-import { PlansComparisonSection } from './components/PlansComparisonSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { FAQSection } from './components/FAQSection';
-import { PreRegistrationForm } from './components/PreRegistrationForm';
+import { ActProblem } from './components/ActProblem';
+import { ActSolution } from './components/ActSolution';
+import { ActGrowth } from './components/ActGrowth';
+import { ActMonetization } from './components/ActMonetization';
+import { ActFounders } from './components/ActFounders';
+import { ActCountdown } from './components/ActCountdown';
+import { ActPreRegistration } from './components/ActPreRegistration';
 import { SuccessModal } from './components/SuccessModal';
 import { LiveNotificationToast } from './components/LiveNotificationToast';
 import { Footer } from './components/Footer';
-import { FounderRegistration } from './types';
 
 export default function App() {
-  const [maxSpots] = useState<number>(500);
-  const [spotsFilled, setSpotsFilled] = useState<number>(() => {
-    try {
-      const saved = localStorage.getItem('zapgroup_founders');
-      const count = saved ? JSON.parse(saved).length : 0;
-      return 384 + count;
-    } catch {
-      return 384;
-    }
-  });
-
   const [modalOpen, setModalOpen] = useState(false);
-  const [registration, setRegistration] = useState<FounderRegistration | null>(null);
+  const [userData, setUserData] = useState<{
+    name: string;
+    email: string;
+    whatsapp: string;
+    groups: string;
+  } | null>(null);
 
-  const scrollToForm = () => {
-    const el = document.getElementById('cadastro');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const scrollToSimulator = () => {
-    const el = document.getElementById('simulador');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
-  const handleSuccessRegistration = (newRegistration: FounderRegistration) => {
-    setRegistration(newRegistration);
-    setSpotsFilled((prev) => Math.min(prev + 1, maxSpots));
+  const handlePreRegistrationSuccess = (data: { name: string; email: string; whatsapp: string; groups: string }) => {
+    setUserData(data);
     setModalOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-[#07080a] text-[#f0f0f2] relative selection:bg-emerald-500/30 selection:text-emerald-200">
-      {/* Aurora Ambient Canvas */}
-      <AuroraBackground />
+      
+      {/* Floating Glass Navigation */}
+      <Navbar />
 
-      {/* Main Sticky Header */}
-      <Navbar 
-        spotsFilled={spotsFilled} 
-        maxSpots={maxSpots} 
-        onOpenForm={scrollToForm} 
-      />
-
-      {/* Main Content Sections */}
+      {/* Storytelling Narrative Flow */}
       <main className="relative z-10">
-        <Hero 
-          spotsFilled={spotsFilled} 
-          maxSpots={maxSpots} 
-          onOpenForm={scrollToForm} 
-          onOpenSimulator={scrollToSimulator} 
-        />
+        
+        {/* Entrance: 100vh Full Screen Impact Hero */}
+        <Hero />
 
-        <CountdownSection onOpenForm={scrollToForm} />
+        {/* Capítulo 01: O Problema (Caos Manual vs Sistema Autônomo) */}
+        <ActProblem />
 
-        <BenefitsSection onOpenForm={scrollToForm} />
+        {/* Capítulo 02: A Solução (SaaS Interface Mockup Interativo) */}
+        <ActSolution />
 
-        <HowItWorksSection onOpenForm={scrollToForm} />
+        {/* Capítulo 03: Quanto Pode Crescer (Simulador de Expansão & MRR) */}
+        <ActGrowth />
 
-        <AffiliatesSection onOpenForm={scrollToForm} />
+        {/* Capítulo 04: Como Ganhar Dinheiro (Afiliados 40% & Cartão de Créditos) */}
+        <ActMonetization />
 
-        <CreditSystemSection onOpenForm={scrollToForm} />
+        {/* Capítulo 05: Programa Fundadores (Clube VIP Dourado & Vantagens Vitalícias) */}
+        <ActFounders />
 
-        <PlansComparisonSection onOpenForm={scrollToForm} />
+        {/* Capítulo 06: Contagem Regressiva para 30 de Julho */}
+        <ActCountdown />
 
-        <TestimonialsSection />
+        {/* Capítulo Final: Pré-Cadastro VIP */}
+        <ActPreRegistration onSuccess={handlePreRegistrationSuccess} />
 
-        <FAQSection />
-
-        <PreRegistrationForm 
-          onSuccess={handleSuccessRegistration} 
-          spotsFilled={spotsFilled} 
-          maxSpots={maxSpots} 
-        />
       </main>
 
-      {/* Footer */}
+      {/* Minimalist Footer */}
       <Footer />
 
       {/* Confirmation Modal */}
       <SuccessModal 
         isOpen={modalOpen} 
         onClose={() => setModalOpen(false)} 
-        registration={registration} 
-        spotsFilled={spotsFilled} 
+        userData={userData}
       />
 
-      {/* Social Proof Toasts */}
+      {/* Real-time Ticker Toasts */}
       <LiveNotificationToast />
+
     </div>
   );
 }

@@ -3,23 +3,30 @@
 @layer base {
   :root {
     --bg: #07080a;
-    --surface: rgba(255, 255, 255, 0.045);
+    --surface: rgba(255, 255, 255, 0.04);
     --surface-2: rgba(255, 255, 255, 0.08);
     --surface-s: #0e0f12;
-    --border: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.16);
     --text: #f0f0f2;
     --text-2: #9898a0;
     --text-3: #52525a;
     --accent: #10b981;
     --font-d: 'Space Grotesk', sans-serif;
     --font-b: 'Inter', sans-serif;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-b);
   }
 
   body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: var(--font-b);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-display {
@@ -27,117 +34,93 @@
   }
 }
 
-/* Custom Glassmorphism Classes */
+/* Glassmorphism System from Nexus Business */
 .glass {
-  background: var(--surface);
-  backdrop-filter: blur(26px) saturate(150%);
-  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
   border: 1px solid var(--border);
 }
 
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.15);
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.12);
 }
 
 .glass-input {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--text);
-  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: all 0.25s ease;
 }
 
 .glass-input:focus {
   outline: none;
   border-color: #10b981;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
 }
 
-.glass-badge {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-}
-
-/* Aurora Blobs */
-@keyframes blob1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(7%, 11%) scale(1.12); }
-  66% { transform: translate(-5%, 3%) scale(0.94); }
-}
-
-@keyframes blob2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-9%, 9%) scale(1.18); }
-}
-
-@keyframes blob3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(5%, -9%) scale(1.1); }
-}
-
-.animate-blob1 {
-  animation: blob1 26s ease-in-out infinite;
-}
-
-.animate-blob2 {
-  animation: blob2 34s ease-in-out infinite;
-}
-
-.animate-blob3 {
-  animation: blob3 40s ease-in-out infinite;
-}
-
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(7, 8, 10, 0.8);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 99px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.4);
-}
-
-/* Glow gradient utilities */
+/* Gradients and Ambient Lighting */
 .text-gradient-emerald {
-  background: linear-gradient(135deg, #ffffff 30%, #34d399 100%);
+  background: linear-gradient(135deg, #ffffff 20%, #6ee7b7 60%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #fffbeb 20%, #fef08a 60%, #f59e0b 100%);
+  background: linear-gradient(135deg, #ffffff 20%, #fde047 60%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.bg-emerald-glow {
-  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.35);
+.text-gradient-purple {
+  background: linear-gradient(135deg, #ffffff 20%, #c084fc 60%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.bg-amber-glow {
-  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.35);
+.glow-spotlight-emerald {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
 }
 
+.glow-spotlight-amber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
+}
+
+.glow-spotlight-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
+}
+
+/* Custom Animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* Noise overlay */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
