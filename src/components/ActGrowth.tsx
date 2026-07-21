@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  TrendingUp, 
-  DollarSign, 
-  Users, 
-  Calculator, 
+  Coins, 
   Sparkles, 
   Zap, 
+  Home, 
+  Layers, 
+  Search, 
+  TrendingUp, 
+  Plus, 
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  CreditCard
 } from 'lucide-react';
 
 export const ActGrowth: React.FC = () => {
-  const [memberCount, setMemberCount] = useState<number>(350);
-  const [monthlyPrice, setMonthlyPrice] = useState<number>(87);
+  const [balance, setBalance] = useState<number>(150);
+  const [activeAction, setActiveAction] = useState<string | null>(null);
 
-  // Math Calculations
-  const grossMRR = memberCount * monthlyPrice;
-  const standardGatewayFee = grossMRR * 0.079; // ~7.9% average competitor
-  const zapGroupFounderFee = grossMRR * 0.029; // 2.9% Founder privilege
-  const monthlySavings = standardGatewayFee - zapGroupFounderFee;
-  const yearlySavings = monthlySavings * 12;
+  const handleSpend = (cost: number, actionName: string) => {
+    if (balance >= cost) {
+      setBalance(prev => prev - cost);
+      setActiveAction(`Ativado: ${actionName} (-${cost} cr)`);
+    } else {
+      setActiveAction('Créditos insuficientes para este destaque!');
+    }
+    setTimeout(() => setActiveAction(null), 3000);
+  };
+
+  const handleRecharge = () => {
+    setBalance(prev => prev + 50);
+    setActiveAction('Recarga realizada: +50 créditos adicionados!');
+    setTimeout(() => setActiveAction(null), 3000);
+  };
 
   return (
     <section className="py-28 relative overflow-hidden bg-gradient-to-b from-[#07080a] via-[#0e1017] to-[#07080a]">
@@ -31,7 +43,7 @@ export const ActGrowth: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Story Chapter Tag */}
+        {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,141 +52,142 @@ export const ActGrowth: React.FC = () => {
           className="text-center space-y-4 mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-widest">
-            <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
-            <span>Capítulo 03 • Simulador de Expansão</span>
+            <Coins className="w-3.5 h-3.5 text-amber-400" />
+            <span>Sistema de Créditos</span>
           </div>
 
           <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12]">
-            Quanto o seu negócio pode faturar <br />
-            <span className="text-gradient-gold">com recorrência em automático?</span>
+            A moeda de crescimento da sua comunidade <br />
+            <span className="text-gradient-gold">Impulsione com total flexibilidade</span>
           </h2>
 
           <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Arraste os seletores para simular seu faturamento mensal e veja o impacto financeiro do Programa Fundadores.
+            Os créditos permitem direcionar a atenção de milhares de visitantes para o seu grupo exatamente quando e onde você desejar.
           </p>
         </motion.div>
 
-        {/* Interactive Calculator Panel */}
+        {/* Digital Wallet Interactive Showcase */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Controls */}
-          <div className="lg:col-span-7 glass-panel p-6 sm:p-10 rounded-3xl space-y-8 border border-white/10">
-            
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <span className="text-sm font-bold text-white flex items-center gap-2">
-                <Calculator className="w-4 h-4 text-emerald-400" />
-                Simulador Dinâmico ZapGroup
+          {/* Left: Wallet Dashboard */}
+          <div className="lg:col-span-5 p-8 rounded-3xl glass-panel border border-amber-500/40 bg-gradient-to-br from-amber-950/20 via-zinc-950 to-zinc-950 space-y-6 relative overflow-hidden shadow-2xl">
+            <div className="flex items-center justify-between border-b border-amber-500/20 pb-4">
+              <span className="text-xs font-mono font-bold text-amber-300 uppercase flex items-center gap-2">
+                <CreditCard className="w-4 h-4 text-amber-400" />
+                Carteira Digital de Créditos
               </span>
-              <span className="text-xs font-mono text-zinc-400">Valores em Reais (BRL)</span>
+              <span className="text-[10px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono">
+                CONTA ATIVA
+              </span>
             </div>
 
-            {/* Slider 1: Member Count */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-zinc-300 font-medium flex items-center gap-2">
-                  <Users className="w-4 h-4 text-emerald-400" />
-                  Membros VIPs Ativos:
-                </span>
-                <span className="font-display font-bold text-xl text-emerald-400">
-                  {memberCount.toLocaleString('pt-BR')} membros
-                </span>
-              </div>
-
-              <input 
-                type="range" 
-                min="50" 
-                max="5000" 
-                step="50"
-                value={memberCount}
-                onChange={(e) => setMemberCount(Number(e.target.value))}
-                className="w-full h-2.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-              />
-              <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
-                <span>50 membros</span>
-                <span>2.500 membros</span>
-                <span>5.000 membros</span>
+            <div className="space-y-1">
+              <div className="text-xs text-zinc-400 uppercase font-mono">Seu Saldo Disponível</div>
+              <div className="font-display font-bold text-5xl text-white flex items-center gap-3">
+                <Coins className="w-8 h-8 text-amber-400" />
+                <span>{balance}</span>
+                <span className="text-sm font-normal text-amber-300/80 font-mono">créditos</span>
               </div>
             </div>
 
-            {/* Slider 2: Ticket Price */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-zinc-300 font-medium flex items-center gap-2">
-                  <DollarSign className="w-4 h-4 text-amber-400" />
-                  Valor da Assinatura Mensal:
-                </span>
-                <span className="font-display font-bold text-xl text-amber-400">
-                  R$ {monthlyPrice},00 /mês
-                </span>
-              </div>
+            {activeAction && (
+              <motion.div 
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono flex items-center gap-2"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>{activeAction}</span>
+              </motion.div>
+            )}
 
-              <input 
-                type="range" 
-                min="20" 
-                max="500" 
-                step="5"
-                value={monthlyPrice}
-                onChange={(e) => setMonthlyPrice(Number(e.target.value))}
-                className="w-full h-2.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
-              />
-              <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
-                <span>R$ 20</span>
-                <span>R$ 250</span>
-                <span>R$ 500</span>
-              </div>
+            <div className="pt-2">
+              <button
+                onClick={handleRecharge}
+                className="w-full py-3.5 rounded-2xl bg-amber-500 text-slate-950 font-bold text-xs hover:bg-amber-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 cursor-pointer"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Simular Recarga de +50 Créditos</span>
+              </button>
             </div>
-
-            {/* Comparison Badge */}
-            <div className="p-4 rounded-2xl bg-zinc-950/80 border border-white/10 space-y-2 text-xs">
-              <div className="text-zinc-400 flex items-center justify-between">
-                <span>Taxa Padrão Outras Plataformas (~7.9%):</span>
-                <span className="text-rose-400 line-through">R$ {Math.round(standardGatewayFee).toLocaleString('pt-BR')}/mês</span>
-              </div>
-              <div className="text-zinc-200 font-bold flex items-center justify-between">
-                <span className="text-amber-300 flex items-center gap-1">
-                  <Zap className="w-3.5 h-3.5 text-amber-400" />
-                  Taxa do Programa Fundadores (2.9%):
-                </span>
-                <span className="text-emerald-400 font-display font-bold text-sm">R$ {Math.round(zapGroupFounderFee).toLocaleString('pt-BR')}/mês</span>
-              </div>
-            </div>
-
           </div>
 
-          {/* Right Results Dashboard */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Projected MRR Card */}
-            <div className="p-8 rounded-3xl glass-panel border border-emerald-500/40 bg-gradient-to-br from-emerald-950/30 to-zinc-950 space-y-4 relative overflow-hidden shadow-xl">
-              <div className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
-                <span>Faturamento Recorrente Projetado (MRR)</span>
-              </div>
-
-              <div className="font-display font-bold text-4xl sm:text-5xl text-white">
-                R$ {grossMRR.toLocaleString('pt-BR')},00
-                <span className="text-xs text-zinc-400 font-normal block sm:inline sm:ml-2">/mês</span>
-              </div>
-
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                Dinheiro pingando no seu bolso todos os meses via PIX automático com renovação preditiva.
-              </p>
+          {/* Right: Actions List */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+              Ações de Destaque Disponíveis na Plataforma:
             </div>
 
-            {/* Yearly Savings Badge */}
-            <div className="p-6 rounded-3xl glass-panel border border-amber-500/40 bg-gradient-to-br from-amber-950/30 to-zinc-950 space-y-3 relative overflow-hidden">
-              <div className="text-xs font-mono uppercase tracking-wider text-amber-300 font-bold flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Economia Anual do Membro Fundador</span>
+            <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                  <Home className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-sm">Destaque na Home</div>
+                  <div className="text-xs text-zinc-400">Banner principal visível na entrada do site</div>
+                </div>
               </div>
+              <button
+                onClick={() => handleSpend(10, 'Destaque na Home')}
+                className="px-4 py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-mono font-bold text-xs border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition-all cursor-pointer"
+              >
+                10 Créditos
+              </button>
+            </div>
 
-              <div className="font-display font-bold text-3xl text-amber-300">
-                + R$ {Math.round(yearlySavings).toLocaleString('pt-BR')},00
+            <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/30">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-sm">Topo da Categoria</div>
+                  <div className="text-xs text-zinc-400">Melhor posição dentro do seu nicho específico</div>
+                </div>
               </div>
+              <button
+                onClick={() => handleSpend(5, 'Topo da Categoria')}
+                className="px-4 py-2 rounded-xl bg-blue-500/20 text-blue-300 font-mono font-bold text-xs border border-blue-500/30 hover:bg-blue-500 hover:text-slate-950 transition-all cursor-pointer"
+              >
+                5 Créditos
+              </button>
+            </div>
 
-              <p className="text-xs text-zinc-400">
-                Mais capital líquido no seu caixa para reinvestir em tráfego e escalar ainda mais.
-              </p>
+            <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/30">
+                  <Search className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-sm">Exposição na Busca</div>
+                  <div className="text-xs text-zinc-400">Apareça primeiro nas pesquisas por palavras-chave</div>
+                </div>
+              </div>
+              <button
+                onClick={() => handleSpend(3, 'Exposição na Busca')}
+                className="px-4 py-2 rounded-xl bg-purple-500/20 text-purple-300 font-mono font-bold text-xs border border-purple-500/30 hover:bg-purple-500 hover:text-white transition-all cursor-pointer"
+              >
+                3 Créditos
+              </button>
+            </div>
+
+            <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-sm">Grupo em Destaque Especial</div>
+                  <div className="text-xs text-zinc-400">Selo verificado + impulso máximo de alcance</div>
+                </div>
+              </div>
+              <button
+                onClick={() => handleSpend(15, 'Destaque Especial')}
+                className="px-4 py-2 rounded-xl bg-amber-500/20 text-amber-300 font-mono font-bold text-xs border border-amber-500/30 hover:bg-amber-500 hover:text-slate-950 transition-all cursor-pointer"
+              >
+                15 Créditos
+              </button>
             </div>
 
           </div>

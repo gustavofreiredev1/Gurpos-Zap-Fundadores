@@ -5,7 +5,9 @@ import { ActProblem } from './components/ActProblem';
 import { ActSolution } from './components/ActSolution';
 import { ActGrowth } from './components/ActGrowth';
 import { ActMonetization } from './components/ActMonetization';
+import { ActPlans } from './components/ActPlans';
 import { ActFounders } from './components/ActFounders';
+import { ActFAQ } from './components/ActFAQ';
 import { ActCountdown } from './components/ActCountdown';
 import { ActPreRegistration } from './components/ActPreRegistration';
 import { SuccessModal } from './components/SuccessModal';
@@ -21,8 +23,7 @@ export default function App() {
     groups: string;
   } | null>(null);
 
-  const handlePreRegistrationSuccess = (data: { name: string; email: string; whatsapp: string; groups: string }) => {
-    setUserData(data);
+  const handlePreRegistrationSuccess = () => {
     setModalOpen(true);
   };
 
@@ -35,28 +36,34 @@ export default function App() {
       {/* Storytelling Narrative Flow */}
       <main className="relative z-10">
         
-        {/* Entrance: 100vh Full Screen Impact Hero */}
+        {/* Entrance: Full Screen Impact Hero */}
         <Hero />
 
-        {/* Capítulo 01: O Problema (Caos Manual vs Sistema Autônomo) */}
+        {/* 01. O Problema */}
         <ActProblem />
 
-        {/* Capítulo 02: A Solução (SaaS Interface Mockup Interativo) */}
+        {/* 02. Como Funciona (5 Passos do Ecossistema) */}
         <ActSolution />
 
-        {/* Capítulo 03: Quanto Pode Crescer (Simulador de Expansão & MRR) */}
+        {/* 03. Sistema de Créditos & Carteira Digital */}
         <ActGrowth />
 
-        {/* Capítulo 04: Como Ganhar Dinheiro (Afiliados 40% & Cartão de Créditos) */}
+        {/* 04. Impulsionamentos & Programa de Afiliados */}
         <ActMonetization />
 
-        {/* Capítulo 05: Programa Fundadores (Clube VIP Dourado & Vantagens Vitalícias) */}
+        {/* 05. Planos de Acesso (Free, Pro, Business) */}
+        <ActPlans />
+
+        {/* 06. Programa Fundadores (Benefícios Exclusivos) */}
         <ActFounders />
 
-        {/* Capítulo 06: Contagem Regressiva para 30 de Julho */}
+        {/* 07. FAQ / Perguntas Frequentes */}
+        <ActFAQ />
+
+        {/* 08. Contagem Regressiva para 30/07 */}
         <ActCountdown />
 
-        {/* Capítulo Final: Pré-Cadastro VIP */}
+        {/* 09. Cadastro Final de Grupos */}
         <ActPreRegistration onSuccess={handlePreRegistrationSuccess} />
 
       </main>
