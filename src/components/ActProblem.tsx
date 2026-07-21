@@ -1,19 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { 
-  XCircle, 
-  CheckCircle2, 
   AlertTriangle, 
   Users, 
   Eye, 
   Share2, 
   TrendingUp, 
-  Coins, 
-  Zap, 
-  ShieldAlert 
+  Coins 
 } from 'lucide-react';
 
 export const ActProblem: React.FC = () => {
+  const problems = [
+    {
+      title: "Poucos Membros Novos",
+      desc: "Luta constante para conseguir novas entradas de pessoas reais e ativas todos os dias no seu grupo.",
+      icon: Users,
+      accent: "bg-rose-500/15 text-rose-400 border-rose-500/30"
+    },
+    {
+      title: "Difícil Encontrar Público Interessado",
+      desc: "Gastar tempo divulgando em locais genéricos e atrair pessoas sem o perfil correto da sua comunidade.",
+      icon: Eye,
+      accent: "bg-purple-500/15 text-purple-400 border-purple-500/30"
+    },
+    {
+      title: "Falta de Divulgação Eficiente",
+      desc: "Dependência de links perdidos em redes sociais que são ignorados pelos leitores e punidos pelos algoritmos.",
+      icon: Share2,
+      accent: "bg-amber-500/15 text-amber-400 border-amber-500/30"
+    },
+    {
+      title: "Sem Dados de Crescimento",
+      desc: "Operar no escuro sem saber quantos cliques seu grupo recebeu, de onde vieram ou qual sua taxa de conversão.",
+      icon: TrendingUp,
+      accent: "bg-blue-500/15 text-blue-400 border-blue-500/30"
+    },
+    {
+      title: "Sem Formas de Monetizar",
+      desc: "Trabalho pesado de moderação e curadoria sem nenhum retorno financeiro ou programa de recompensas associado.",
+      icon: Coins,
+      accent: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30"
+    }
+  ];
+
   return (
     <section className="py-28 relative overflow-hidden bg-gradient-to-b from-[#07080a] via-[#0b0d12] to-[#07080a]">
       
@@ -37,88 +66,37 @@ export const ActProblem: React.FC = () => {
           </div>
 
           <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
-            Ter um grupo é fácil. <br />
-            <span className="text-gradient-emerald">Fazer ele crescer é o desafio.</span>
+            Criar um grupo é fácil. <br />
+            <span className="text-gradient-emerald">Fazer ele crescer é difícil.</span>
           </h2>
 
           <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Administradores criam comunidades incríveis todos os dias, mas enfrentam barreiras constantes para manter o grupo ativo, relevante e rentável.
+            Administradores enfrentam barreiras diárias que impedem suas comunidades de atingir o potencial máximo. A plataforma resolve cada um desses obstáculos.
           </p>
         </motion.div>
 
         {/* 5 Problem Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          
-          {/* Problem 1 */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="p-6 rounded-3xl glass-card border border-white/10 space-y-4 relative overflow-hidden"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-400 border border-rose-500/30 flex items-center justify-center font-bold">
-              <Users className="w-6 h-6" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white">Encontrar Novos Membros</h3>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Dificuldade constante para atrair pessoas realmente interessadas e qualificadas sem gastar fortunas em anúncios.
-            </p>
-          </motion.div>
-
-          {/* Problem 2 */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="p-6 rounded-3xl glass-card border border-white/10 space-y-4 relative overflow-hidden"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold">
-              <Share2 className="w-6 h-6" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white">Divulgar Seus Grupos</h3>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Dependência de links soltos e sem destaque em redes sociais que são ignorados pelo público e pelos algoritmos.
-            </p>
-          </motion.div>
-
-          {/* Problem 3 */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="p-6 rounded-3xl glass-card border border-white/10 space-y-4 relative overflow-hidden"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-purple-500/15 text-purple-400 border border-purple-500/30 flex items-center justify-center font-bold">
-              <Eye className="w-6 h-6" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white">Falta de Visibilidade</h3>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Sem um canal centralizado e organizado, seu grupo fica perdido entre milhares de outros e nunca alcança o topo.
-            </p>
-          </motion.div>
-
-          {/* Problem 4 */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="p-6 rounded-3xl glass-card border border-white/10 space-y-4 relative overflow-hidden"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-blue-500/15 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold">
-              <TrendingUp className="w-6 h-6" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white">Estratégias sem Dados</h3>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Sem métricas claras para entender de onde vêm os participantes, quais temas convertem melhor e como escalar.
-            </p>
-          </motion.div>
-
-          {/* Problem 5 */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="p-6 rounded-3xl glass-card border border-white/10 space-y-4 relative overflow-hidden md:col-span-2 lg:col-span-1"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold">
-              <Coins className="w-6 h-6" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white">Monetizar Seu Crescimento</h3>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Trabalho contínuo de moderação e conteúdo sem um programa de recompensas que remunere o esforço do administrador.
-            </p>
-          </motion.div>
-
+          {problems.map((item, idx) => {
+            const IconComp = item.icon;
+            return (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -5 }}
+                className={`p-6 rounded-3xl glass-card border border-white/10 space-y-4 relative overflow-hidden ${
+                  idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
+              >
+                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center font-bold ${item.accent}`}>
+                  <IconComp className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-xl text-white">{item.title}</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed font-light">
+                  {item.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>

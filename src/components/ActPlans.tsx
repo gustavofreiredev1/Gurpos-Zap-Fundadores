@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, Shield, Zap, Crown, ArrowRight, Sparkles } from 'lucide-react';
+import { CheckCircle2, Shield, ArrowRight, Sparkles } from 'lucide-react';
 
 export const ActPlans: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ export const ActPlans: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono uppercase tracking-widest">
             <Shield className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Planos de Acesso</span>
+            <span>Planos para Administradores</span>
           </div>
 
           <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12]">
@@ -30,7 +30,7 @@ export const ActPlans: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Planos desenvolvidos especialmente para administradores cadastrados com foco em escala e inteligência.
+            Planos voltados para cadastrados da plataforma. Não misturamos planos com impulsionamentos em créditos.
           </p>
         </motion.div>
 
@@ -47,9 +47,9 @@ export const ActPlans: React.FC = () => {
                 <span className="px-3 py-1 rounded-full bg-white/10 text-zinc-300 text-xs font-mono font-bold">
                   FREE
                 </span>
-                <h3 className="font-display font-bold text-2xl text-white">Para Começar</h3>
+                <h3 className="font-display font-bold text-2xl text-white">Comece Gratuitamente</h3>
                 <p className="text-xs text-zinc-400">
-                  Perfeito para quem deseja publicar os primeiros grupos e testar o ecossistema.
+                  Ideal para cadastrar seus primeiros grupos e conhecer a plataforma.
                 </p>
               </div>
 
@@ -60,19 +60,19 @@ export const ActPlans: React.FC = () => {
               <ul className="space-y-3 text-xs text-zinc-300">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Gerenciar grupos na plataforma</span>
+                  <span>Cadastro de grupos gratuito</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Participar do programa de afiliados</span>
+                  <span>Painel básico do administrador</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Ganhar créditos por indicações</span>
+                  <span>Sistema de recompensas e afiliados</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Painel básico de estatísticas</span>
+                  <span>Participação no lançamento oficial</span>
                 </li>
               </ul>
             </div>
@@ -102,7 +102,7 @@ export const ActPlans: React.FC = () => {
               <div className="space-y-2">
                 <h3 className="font-display font-bold text-2xl text-white">Para Administradores que Querem Crescer</h3>
                 <p className="text-xs text-zinc-300">
-                  Recursos avançados de visibilidade e comissão direta em dinheiro.
+                  Recursos avançados de inteligência, comissão direta e maiores benefícios.
                 </p>
               </div>
 
@@ -113,15 +113,15 @@ export const ActPlans: React.FC = () => {
               <ul className="space-y-3 text-xs text-zinc-200">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Cadastrar múltiplos grupos VIPs</span>
+                  <span>Mais grupos cadastrados</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Analytics detalhado de cliques e origem</span>
+                  <span>Analytics detalhado de cliques e origens</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Benefícios extras e pacote de créditos</span>
+                  <span>Benefícios exclusivos e prioridade</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -129,7 +129,7 @@ export const ActPlans: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Descontos em impulsionamentos</span>
+                  <span>Descontos especiais em pacotes de créditos</span>
                 </li>
               </ul>
             </div>
@@ -155,7 +155,7 @@ export const ActPlans: React.FC = () => {
                 </span>
                 <h3 className="font-display font-bold text-2xl text-white">Para Grandes Comunidades</h3>
                 <p className="text-xs text-zinc-400">
-                  Infraestrutura de alta escala para agências e donos de redes de grupos.
+                  Infraestrutura de escala ilimitada para redes de grupos e gestores.
                 </p>
               </div>
 
@@ -170,15 +170,15 @@ export const ActPlans: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>Recursos avançados de automação</span>
+                  <span>Recursos avançados de automação e dados</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>Maior taxa de comissão de afiliado</span>
+                  <span>Maior taxa de comissão no programa de afiliados</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>Benefícios exclusivos e suporte VIP</span>
+                  <span>Benefícios exclusivos e suporte VIP dedicado</span>
                 </li>
               </ul>
             </div>

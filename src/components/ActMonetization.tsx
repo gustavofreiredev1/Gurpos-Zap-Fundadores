@@ -6,10 +6,10 @@ import {
   Sparkles, 
   ArrowRight, 
   CheckCircle2, 
-  Crown, 
-  Award,
   Wallet,
-  Users
+  Users,
+  Coins,
+  TrendingUp
 } from 'lucide-react';
 
 export const ActMonetization: React.FC = () => {
@@ -64,16 +64,16 @@ export const ActMonetization: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-mono uppercase tracking-widest">
             <Zap className="w-3.5 h-3.5 text-purple-400" />
-            <span>Alcance & Monetização</span>
+            <span>Impulsionamentos & Recompensas</span>
           </div>
 
           <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12]">
-            Impulsionamentos & Programa de Afiliados <br />
-            <span className="text-gradient-purple">Multiplique seu Alcance e Suas Recompensas</span>
+            Coloque sua comunidade em destaque. <br />
+            <span className="text-gradient-purple">Quanto mais destaque, maior a exposição.</span>
           </h2>
 
           <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Destaque seu grupo para milhares de pessoas ou ganhe comissões indicando novos administradores para a plataforma.
+            Aumente exponencialmente a entrada de novos participantes no seu grupo ou receba recompensas no programa de afiliados.
           </p>
         </motion.div>
 
@@ -120,10 +120,10 @@ export const ActMonetization: React.FC = () => {
               >
                 <div className="text-center max-w-xl mx-auto space-y-2">
                   <h3 className="font-display font-bold text-2xl text-white">
-                    Quer mais alcance? Destaque seu grupo para milhares de pessoas.
+                    Coloque sua comunidade em destaque.
                   </h3>
                   <p className="text-xs text-zinc-400">
-                    Escolha o pacote ideal de impulsionamentos para acelerar a entrada de novos membros.
+                    Quanto mais impulsionamentos ativados, maior o tempo e a posição do seu grupo frente a milhares de visitantes.
                   </p>
                 </div>
 
@@ -146,7 +146,7 @@ export const ActMonetization: React.FC = () => {
                           {pkg.boosts}
                         </div>
 
-                        <p className="text-xs text-zinc-400 leading-relaxed">
+                        <p className="text-xs text-zinc-400 leading-relaxed font-light">
                           {pkg.desc}
                         </p>
                       </div>
@@ -178,10 +178,10 @@ export const ActMonetization: React.FC = () => {
                     PROGRAMA DE RECOMPENSAS
                   </span>
                   <h3 className="font-display font-bold text-3xl text-white">
-                    Compartilhe a plataforma e seja recompensado.
+                    Cresça com a comunidade e seja recompensado.
                   </h3>
                   <p className="text-xs text-zinc-400">
-                    Usuários cadastrados podem receber benefícios e comissões ao indicar novos administradores.
+                    Indique novos administradores e ganhe comissões recorrentes em dinheiro via PIX ou créditos bônus para seu próprio grupo.
                   </p>
                 </div>
 
@@ -190,49 +190,53 @@ export const ActMonetization: React.FC = () => {
                   
                   <div className="p-5 rounded-2xl bg-zinc-950/80 border border-purple-500/20 space-y-2 text-center">
                     <div className="w-10 h-10 mx-auto rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold">1</div>
-                    <div className="font-bold text-white text-xs">Seu Link Exclusivo</div>
-                    <p className="text-[11px] text-zinc-400">Você compartilha seu link com outros administradores.</p>
+                    <div className="font-bold text-white text-xs">Compartilhe seu link</div>
+                    <p className="text-[11px] text-zinc-400">Divulgue seu link exclusivo de indicação para outros administradores.</p>
                   </div>
 
                   <div className="p-5 rounded-2xl bg-zinc-950/80 border border-purple-500/20 space-y-2 text-center">
                     <div className="w-10 h-10 mx-auto rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold">2</div>
-                    <div className="font-bold text-white text-xs">Novo Usuário Entra</div>
-                    <p className="text-[11px] text-zinc-400">Seu indicado acessa e cria uma conta na plataforma.</p>
+                    <div className="font-bold text-white text-xs">Novos usuários entram</div>
+                    <p className="text-[11px] text-zinc-400">O administrador indicado cria uma conta gratuita na plataforma.</p>
                   </div>
 
                   <div className="p-5 rounded-2xl bg-zinc-950/80 border border-purple-500/20 space-y-2 text-center">
                     <div className="w-10 h-10 mx-auto rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold">3</div>
-                    <div className="font-bold text-white text-xs">Adesão ou Créditos</div>
-                    <p className="text-[11px] text-zinc-400">Ele compra créditos ou assina um plano Pro/Business.</p>
+                    <div className="font-bold text-white text-xs">Eles usam a plataforma</div>
+                    <p className="text-[11px] text-zinc-400">Ao assinar um plano Pro/Business ou comprar pacotes de créditos.</p>
                   </div>
 
                   <div className="p-5 rounded-2xl bg-gradient-to-br from-purple-900/40 to-zinc-950 border border-purple-500/50 space-y-2 text-center shadow-lg">
                     <div className="w-10 h-10 mx-auto rounded-xl bg-purple-500 text-slate-950 flex items-center justify-center font-bold">4</div>
-                    <div className="font-bold text-amber-300 text-xs">Você É Recompensado</div>
-                    <p className="text-[11px] text-zinc-300">Receba créditos bônus ou comissão direta no seu saldo.</p>
+                    <div className="font-bold text-amber-300 text-xs">Você recebe recompensas</div>
+                    <p className="text-[11px] text-zinc-300">Sua comissão cai direto na carteira em dinheiro ou créditos.</p>
                   </div>
 
                 </div>
 
                 {/* Affiliate Wallet Visual Mockup */}
-                <div className="p-6 rounded-2xl bg-zinc-950/80 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
-                  <div className="space-y-1 text-center md:text-left">
-                    <div className="text-zinc-400 font-mono">Painel do Afiliado</div>
-                    <div className="font-display font-bold text-2xl text-white flex items-center gap-2 justify-center md:justify-start">
-                      <Wallet className="w-5 h-5 text-purple-400" />
-                      <span>R$ 1.480,00 em comissões acumuladas</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 space-y-1">
+                    <div className="text-[10px] font-mono text-zinc-400 uppercase">Comissões Acumuladas</div>
+                    <div className="font-display font-bold text-xl text-emerald-400 flex items-center gap-2">
+                      <Wallet className="w-4 h-4 text-emerald-400" />
+                      <span>R$ 1.480,00</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-zinc-400 font-mono">
-                    <div className="text-center">
-                      <div className="text-white font-bold">34</div>
-                      <div>Indicações</div>
+                  <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 space-y-1">
+                    <div className="text-[10px] font-mono text-zinc-400 uppercase">Créditos Bônus Gerados</div>
+                    <div className="font-display font-bold text-xl text-amber-300 flex items-center gap-2">
+                      <Coins className="w-4 h-4 text-amber-400" />
+                      <span>+350 Créditos</span>
                     </div>
-                    <div className="w-px h-8 bg-white/10" />
-                    <div className="text-center">
-                      <div className="text-emerald-400 font-bold">100%</div>
-                      <div>Repasse Automático</div>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 space-y-1">
+                    <div className="text-[10px] font-mono text-zinc-400 uppercase">Total de Indicações Ativas</div>
+                    <div className="font-display font-bold text-xl text-purple-300 flex items-center gap-2">
+                      <Users className="w-4 h-4 text-purple-400" />
+                      <span>34 Administradores</span>
                     </div>
                   </div>
                 </div>
